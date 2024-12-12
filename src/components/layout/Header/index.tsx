@@ -143,7 +143,7 @@ const Header: FC<HeaderProps> = ({ toggleMenu, isOpen }) => {
               className={`nav-item ${item.link === pathname && "active"}`}
             >
               <Link href={item.link}>
-                <>{item.label} </>
+                <p>{item.label} </p>
               </Link>
             </div>
           ))}

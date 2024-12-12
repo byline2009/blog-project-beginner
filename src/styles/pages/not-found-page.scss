@@ -1,0 +1,67 @@
+// @import "@components/page/NotFoundPage/not-found-page";
+.not-found-page {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  .left-nf {
+    width: 50%;
+    @media (max-width: 480px) {
+      width: 100%;
+      padding-top: $spacing-xxl;
+    }
+    .error-code {
+      font-size: $headline-1;
+      line-height: $lh-headline-1;
+      margin-bottom: $spacing-s;
+      color: $neutral-grey-500;
+      span {
+        color: $primary-base;
+        margin-left: 5px;
+        display: inline-block;
+      }
+    }
+    h2 {
+      font-size: $title-3;
+      line-height: $lh-title-3;
+      margin-bottom: $spacing-xxl;
+      color: $neutral-grey-800;
+      font-weight: 700;
+      @media (max-width: 480px) {
+        font-size: $headline-1;
+        line-height: $lh-headline-1;
+      }
+    }
+    p {
+      font-size: $body;
+      line-height: $lh-body;
+      margin-bottom: $spacing-xxl-3;
+      color: $neutral-grey-500;
+    }
+    ul {
+      padding-left: 25px;
+      li {
+        font-size: $body;
+        line-height: $lh-body;
+        margin-bottom: $spacing-m;
+        color: $neutral-grey-500;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        a {
+          color: $primary-base;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .right-nf {
+    width: 50%;
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}

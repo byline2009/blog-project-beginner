@@ -1,10 +1,25 @@
+@import "houze-icon";
+@import "fonts";
+@import "mixin";
 @import "variables";
+@import "breakpoint";
+@import "components";
+@import "layout";
+
+@import "./components/button";
 @import "../components/layout/Footer/footer";
 @import "../components/layout/Header/header";
 @import "../components/layout/MobileMenu/mobile-menu";
 @import "../components/elements/CollapseCategory/collapse-category";
 @import "@components/elements/MenuItem/menu-item";
 
+// scss page
+@import "./pages/home-page";
+@import "./pages/blog-detail";
+@import "./pages/blog-list";
+@import "./pages/blog-category";
+@import "./pages/search-result";
+@import "./pages/not-found-page";
 
 html,
 body {
