@@ -14,7 +14,6 @@ const formatTime = (time: any) => {
   return `${d} Tháng ${m}, ${y}`
 }
 
-const isSuccessRes = (res: { status: string | number } = { status: '' }) =>
-  res.status === 'success' || (res?.status >= 200 && res?.status <= 299)
 
-export { formatTime, isSuccessRes }
+
+export { formatTime }

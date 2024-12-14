@@ -1,36 +1,35 @@
-import React, { FC, useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { Collapse } from 'react-bootstrap'
+import React, { FC, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Collapse } from "react-bootstrap";
 
 interface IMenuItem {
-  label: string
-  link: string
-  children?: []
-  description?: string
+  label: string;
+  link: string;
+  children?: [];
+  description?: string;
 }
 
 type MenuProps = {
-  itemMenuLink: IMenuItem
-}
+  itemMenuLink: IMenuItem;
+};
 
 const MenuItem: FC<MenuProps> = ({ itemMenuLink }) => {
-  const router = useRouter()
-  const { pathname } = router
+  const pathname = usePathname();
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const handleDropMenu = () => {
-    setOpen(prev => !prev)
-  }
+    setOpen((prev) => !prev);
+  };
 
   return itemMenuLink.children !== undefined ? (
     <div
-      className={`menu-item ${itemMenuLink.link === pathname ? 'active' : ''}`}
+      className={`menu-item ${itemMenuLink.link === pathname ? "active" : ""}`}
     >
       <div className="label-menu-item">
         <h4>{itemMenuLink.label}</h4>
         <button
-          className={`btn-down ${open && 'active'}`}
+          className={`btn-down ${open && "active"}`}
           onClick={() => handleDropMenu()}
         >
           <i className="icon-chevron-down" />
@@ -54,11 +53,11 @@ const MenuItem: FC<MenuProps> = ({ itemMenuLink }) => {
     </div>
   ) : (
     <div
-      className={`menu-item ${itemMenuLink.link === pathname ? 'active' : ''}`}
+      className={`menu-item ${itemMenuLink.link === pathname ? "active" : ""}`}
     >
       <Link href={itemMenuLink.link}>{itemMenuLink.label}</Link>
     </div>
-  )
-}
+  );
+};
 
-export default MenuItem
+export default MenuItem;

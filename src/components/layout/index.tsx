@@ -3,7 +3,7 @@ import React, { FC, ReactNode, useState } from "react";
 // import styles from "../styles/Layout.module.css";
 // import Script from "next/script";
 import dynamic from "next/dynamic";
-const Drawer = dynamic(import("react-modern-drawer"), { ssr: false }); // disable ssr
+import Drawer from "react-modern-drawer";
 // import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import Footer from "./Footer";
@@ -29,7 +29,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <Footer />
       </div>
 
-      <Drawer
+      {/* <Drawer
         open={isOpen}
         onClose={toggleDrawer}
         direction="left"
@@ -38,7 +38,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         zIndex={9999}
       >
         <MobileMenu toggleMenu={toggleDrawer} isOpen={isOpen} />
-      </Drawer>
+      </Drawer> */}
     </>
   );
 };
