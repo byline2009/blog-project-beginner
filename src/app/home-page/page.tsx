@@ -87,12 +87,27 @@ const setting = {
   ],
 };
 
+
+
+
+
 const page = () => {
-  const { data, error, isLoading } = useSWR(
+
+  const resHero = useSWR(
     "https://houze-portal-api.houze.io/portal/blogs?is_hero=true&ordering=hero",
     fetcher
   );
-  console.log("check data", data);
+  const resWellRead = useSWR(
+    "https://houze-portal-api.houze.io/portal/blogs?is_most_read=true",
+    fetcher
+  );
+  if (!resWellRead.isLoading) {
+
+    console.log("resWellRead", resWellRead)
+
+  }
+
+
 
   const [widthWindow, setWidthWindow] = useState(0);
   const [showChild, setShowChild] = useState(false);
@@ -106,7 +121,7 @@ const page = () => {
 
   return (
     <>
-      {isLoading ? <>
+      {resHero.isLoading ? <>
         <div className="top-news">
           {[1, 2, 3, 4].map(item => (
             <a className="top-news-item" key={item}>
@@ -139,7 +154,7 @@ const page = () => {
         <div className="top-news">
           {widthWindow < 960 ? (
             <Slider {...settingTopnews}>
-              {data.results.map((item: any, index: number) => (
+              {resHero.data.results.map((item: any, index: number) => (
                 <div key={index}>
                   <Link href={`/blog/${item.slug}`} legacyBehavior>
                     <a className="top-news-item">
@@ -155,7 +170,7 @@ const page = () => {
             </Slider>
           ) : (
             <>
-              {data && data.results.map((item: any, index: number) => (
+              {resHero.data && resHero.data.results.map((item: any, index: number) => (
                 <Link href={`/blog/${item.slug}`} key={index} legacyBehavior>
                   <a className="top-news-item">
                     <img src={item.feature_image} alt="top-new" />
@@ -192,6 +207,43 @@ const page = () => {
               Nhận tài liệu
             </button>
           </div>
+        </div>
+        {/* top-news */}
+        <div className="container">
+          <div className="most-read">
+            <h2 className="heading-home">Đọc nhiều nhất</h2>
+            {resWellRead.isLoading ? (
+              <div className="row">
+                {[1, 2, 3, 4, 5, 6].map(item => (
+                  <div key={item} className="col-lg-4 col-md-6 col-xs-12">
+                    <a className="most-read-item">
+                      <div className="api-loading"></div>
+                    </a>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="row">
+                {resWellRead.data.results.map((item: any, index: number) => (
+                  <div key={index} className="col-lg-4 col-md-6 col-xs-12">
+                    <Link href={`/blog/${item.slug}`} legacyBehavior>
+                      <a className="most-read-item">
+                        <div className="thumb">
+                          <img src={item.feature_image} alt="" />
+                        </div>
+                        <div className="most-read-content">
+                          <h3>{item.title}</h3>
+                          <span>{formatTime(item.publish_time)}</span>
+                        </div>
+                      </a>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* new-blog */}
         </div>
       </>}
     </>
