@@ -2,8 +2,8 @@ import React from "react";
 
 type Props = {};
 
-function page({}: Props) {
+function Page({ }: Props) {
   return <div>Dau tu</div>;
 }
 
-export default page;
+export default Page;

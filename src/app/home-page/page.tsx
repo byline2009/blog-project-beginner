@@ -107,7 +107,7 @@ const setting = {
 
 
 
-const page = () => {
+const Page = () => {
 
   const resHero = useSWR(
     "https://houze-portal-api.houze.io/portal/blogs?is_hero=true&ordering=hero",
@@ -132,7 +132,7 @@ const page = () => {
 
   const [numberToShow, setnumberToShow] = useState(12)
   const [blogData, setBlogData] = useState<any[]>([])
-  const [showLoadmore, setshowLoadmore] = useState<Boolean>(true)
+  const [showLoadmore, setshowLoadmore] = useState<boolean>(true)
   const firstUpdate = useRef(true)
 
   useEffect(() => {
@@ -441,4 +441,4 @@ const page = () => {
 
 };
 
-export default page;
+export default Page;
