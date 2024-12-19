@@ -117,7 +117,7 @@ const Page = () => {
     "https://houze-portal-api.houze.io/portal/blogs?is_most_read=true",
     fetcher
   );
-  const resNewestBlog = useSWRImmutable('https://houze-portal-api.houze.io/portal/blogs?is_hero=false&is_most_read=false&limit=1000&offset=0&ordering=-publish_time&section_id=1', fetcher)
+  const resNewestBlog = useSWRImmutable('https://houze-portal-api.houze.io/portal/blogs?is_hero=false&is_most_read=false&limit=100&offset=0&ordering=-publish_time&section_id=1', fetcher)
 
 
 
